@@ -1,49 +1,16 @@
-/*
-  Once you complete a problem, refresh ./for-in-delete.html in your browser and check to see if the problem's test(s) are passing.
-  Passed tests will be indicated by a green circle.
-  Failed tests will be indicated by a red X.
-
-  You can refresh the page at any time to re-run all the tests.
-*/
-
-/*
-  First we'll look at the difference between accessing property values in a for in loop and accessing the property name in a for in loop.
-  In the example below, we are accessing the property values. Uncomment the code below, run it and look at what prints in the console.
-*/
-
-// var values = {
-//   one: 'These',
-//   two: ' are',
-//   three: ' the',
-//   four: ' property',
-//   five: ' values.'
-// } 
-
-// for(var key in values) {
-//   console.log(values[key])
-// }
-
-/*
-  In this next example, we are accessing the property names themselves. Uncomment the code below, run it and look at what prints in the console.
-*/
-
-// for(var key in values) {
-//   console.log(key)
-// }
-
-
-
 ////////// PROBLEM 1 //////////
 
 /*
   Inside the function showValues, write a for in loop that concatenates each of the property values and returns the concatenated string.
 */
 
-function showValues( obj ) {
-  //Code Here
+function showValues(obj) {
+	let values = '';
+	for (let val in obj) {
+		values += obj[val];
+	}
+	return values;
 }
-
-
 
 ////////// PROBLEM 2 //////////
 
@@ -53,9 +20,14 @@ function showValues( obj ) {
   Return the updated object.
 */
 
-//Code Here
-
-
+function greaterThan10(obj) {
+	for (let val in obj) {
+		if (obj[val] > 10) {
+			obj[val] = 0;
+		}
+	}
+	return obj;
+}
 
 ////////// PROBLEM 3 //////////
 
@@ -65,9 +37,12 @@ function showValues( obj ) {
   Return the updated object.
 */
 
-//Code Here
-
-
+function double(obj) {
+	for (let val in obj) {
+		obj[val] = obj[val] * 2;
+	}
+	return obj;
+}
 
 ////////// PROBLEM 4 //////////
 
@@ -79,9 +54,15 @@ function showValues( obj ) {
   By the end of the for in loop, you should have a sentence, return that sentence.
 */
 
-//Code Here
-
-
+function secrets(obj) {
+	var strings = '';
+	for (let val in obj) {
+		if (val.indexOf('sh') === 0) {
+			strings += obj[val];
+		}
+	}
+	return strings;
+}
 
 /* 
   Sometimes it's needed to delete object properties. 
@@ -101,8 +82,6 @@ function showValues( obj ) {
 
 // console.log(deleteAllThethings)
 
-
-
 ////////// PROBLEM 5 //////////
 
 /*
@@ -110,28 +89,31 @@ function showValues( obj ) {
   Delete the property password and return the object.
 */
 
-//Code Here
-
-
+function removePassword(obj) {
+	delete obj.password;
+	return obj;
+}
 
 ////////// PROBLEM 6 //////////
 
 // Do not edit the code below.
 var deleteTheBigNumbers = {
-  first: 10,
-  second: 20,
-  third: 110,
-  fourth: 200
-}
+	first: 10,
+	second: 20,
+	third: 110,
+	fourth: 200
+};
 // Do not edit the code above.
 
 /*
   Write a for in loop that deletes every property from the object deleteTheBigNumbers whose value is greater than 100.
 */
 
-//Code Here
-
-
+for (let prop in deleteTheBigNumbers) {
+	if (deleteTheBigNumbers[prop] > 100) {
+		delete deleteTheBigNumbers[prop];
+	}
+}
 
 ////////// PROBLEM 7 //////////
 
@@ -142,9 +124,14 @@ var deleteTheBigNumbers = {
   Return the updated object.
 */
 
-//Code Here
-
-
+function startsWithK(obj) {
+	for (let val in obj) {
+		if (val.indexOf('k') === 0) {
+			delete obj[val];
+		}
+	}
+	return obj;
+}
 
 ////////// PROBLEM 8 //////////
 
@@ -157,6 +144,11 @@ var deleteTheBigNumbers = {
   (hint: the method includes() may be of use...)
 */
 
-//Code Here
-
-
+function hiddenTreasure(obj) {
+	for (let val in obj) {
+		if (!obj[val].includes('treasure')) {
+			delete obj[val];
+		}
+	}
+	return obj;
+}
